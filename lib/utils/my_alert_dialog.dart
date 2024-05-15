@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class MyAlertDialog<T> extends StatelessWidget {
   /// Creates an alert dialog.
@@ -101,10 +101,9 @@ class MyAlertDialog<T> extends StatelessWidget {
     if (title != null) {
       children.add(new Padding(
         padding: titlePadding ??
-            new EdgeInsets.fromLTRB(
-                24.0, 24.0, 24.0, isDividerEnabled ? 20.0 : 0.0),
+            new EdgeInsets.fromLTRB(24.0, 24.0, 24.0, isDividerEnabled ? 20.0 : 0.0),
         child: new DefaultTextStyle(
-          style: Theme.of(context).textTheme.headline6!,
+          style: Theme.of(context).textTheme.headlineLarge!,
           child: new Semantics(child: title, namesRoute: true),
         ),
       ));
@@ -119,8 +118,7 @@ class MyAlertDialog<T> extends StatelessWidget {
         case TargetPlatform.fuchsia:
         case TargetPlatform.windows:
         case TargetPlatform.linux:
-          label = semanticLabel ??
-              MaterialLocalizations.of(context).alertDialogLabel;
+          label = semanticLabel ?? MaterialLocalizations.of(context).alertDialogLabel;
           break;
       }
     }
@@ -130,7 +128,7 @@ class MyAlertDialog<T> extends StatelessWidget {
         child: new Padding(
           padding: contentPadding,
           child: new DefaultTextStyle(
-            style: Theme.of(context).textTheme.subtitle1!,
+            style: Theme.of(context).textTheme.bodySmall!,
             child: content!,
           ),
         ),
@@ -153,8 +151,7 @@ class MyAlertDialog<T> extends StatelessWidget {
     );
 
     if (label != null)
-      dialogChild =
-          new Semantics(namesRoute: true, label: label, child: dialogChild);
+      dialogChild = new Semantics(namesRoute: true, label: label, child: dialogChild);
 
     return new Dialog(child: dialogChild);
   }
